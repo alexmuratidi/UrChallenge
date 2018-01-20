@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#880e4f</color>
+    <color name="colorPrimaryDark">#880e4f</color>
+    <color name="colorAccent">#CE2D4F</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorVk">#408AD2</color>
+    <color name="grey_light">#FFCCCCCC</color>
+    <color name="dark">#4b4b4b</color>
+    <color name="vk">#36638e</color>
+    <color name="ok">#cf6700</color>
+    <color name="colorPurple">#ac00e6</color>
+    <color name="colorStart">#cf6700</color>
+    <color name="challenge">#880e4f</color>
+    <color name="colorButton">#F7B801</color>
+</resources>
