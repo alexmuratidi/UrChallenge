@@ -3,9 +3,11 @@ package com.hotstavropol.urchallenge1;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ThemedSpinnerAdapter;
 import android.widget.Toast;
@@ -24,11 +26,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Desk1 extends Fragment {
 
+    public ListAdapter getAdapter() {
+        return adapter;
+    }
 
+    private ListAdapter adapter;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ((ListView)view.findViewById(R.id.listView_desk1)).setAdapter(new ListAdapter(this));
+        adapter = new ListAdapter(this);
+        ((ListView)view.findViewById(R.id.listView_desk1)).setAdapter(adapter);
     }
 
     @Override
@@ -43,6 +50,12 @@ public class Desk1 extends Fragment {
             @Override
             public void onResponse(Call<List<Challenge>> call, retrofit2.Response<List<Challenge>> response) {
                 List<Challenge> tmp = response.body();
+                Log.d("msg", tmp.get(0).title + " " + tmp.get(0).description);
+                Challenge t;
+                DataBase.quests.clear();
+                for (int i = 0; i < tmp.size(); i++)
+                    DataBase.quests.add(new Challenge(tmp.get(i).title, tmp.get(i).description));
+                Log.d("msg", "" + DataBase.quests.size());
                 Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
             }
 
@@ -51,7 +64,6 @@ public class Desk1 extends Fragment {
                 Toast.makeText(getContext(), "error :(", Toast.LENGTH_SHORT).show();
             }
         });
-
         return inflater.inflate(R.layout.desk1, container, false);
     }
 

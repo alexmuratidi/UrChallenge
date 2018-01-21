@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -94,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static Desk3 desk3;
+    public static Desk2 desk2;
+    public static Desk1 desk1;
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -104,14 +109,14 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    Desk1 desk1 = new Desk1();
-                    return desk1;
+                    desk3 = new Desk3();
+                    return desk3;
                 case 1:
-                    Desk2 desk2 = new Desk2();
+                    desk2 = new Desk2();
                     return desk2;
                 case 2:
-                    Desk3 desk3 = new Desk3();
-                    return desk3;
+                    desk1 = new Desk1();
+                    return desk1;
             }
             return null;
         }
