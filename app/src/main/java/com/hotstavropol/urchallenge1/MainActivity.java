@@ -1,6 +1,7 @@
 package com.hotstavropol.urchallenge1;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vk.sdk.api.VKApi;
 import com.vk.sdk.api.VKApiConst;
@@ -29,7 +31,15 @@ import com.vk.sdk.api.model.VKList;
 import com.vk.sdk.util.VKUtil;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import com.hotstavropol.urchallenge1.ListAdapter;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddChallengeActivity.class);
-                intent.putExtra("Name", "");
-                intent.putExtra("Desription", "");
+               // intent.putExtra("Name", "");
+               // intent.putExtra("Description", "");
                 startActivity(intent);
             }
         });
-
+        Update.update();
+        //Log.d("msg", DataBase.myquests.size() + "");
+        //Log.d("msg1", DataBase.quests.size() + "");
     }
 
 

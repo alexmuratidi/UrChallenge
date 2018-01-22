@@ -74,9 +74,10 @@ public class AddChallengeActivity extends AppCompatActivity {
                 String s = "all is bad";
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("type", "create");
-                map.put("creator_id", VK.vkAccessToken.userId);
-                map.put("name", challengeName);
+                map.put("user_id", VK.vkAccessToken.userId);
+                map.put("title", challengeName);
                 map.put("description", challengeDescription);
+                map.put("vk_token", VK.vkAccessToken.accessToken);
 
                 final Call<String> call = intf.post(map);
 
@@ -91,7 +92,8 @@ public class AddChallengeActivity extends AppCompatActivity {
                     }
                 }).start();
 
-                DataBase.quests.add(new Challenge(challengeName, challengeDescription));
+                DataBase.quests.add(new Challenge("123", challengeName, challengeDescription, VK.vkAccessToken.userId, "", "", ""));
+                DataBase.myquests.add(new Challenge("123", challengeName, challengeDescription, VK.vkAccessToken.userId, "", "", ""));
                 boolean f = true;
                 String msg;
 

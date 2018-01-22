@@ -11,7 +11,6 @@ import java.util.List;
 
 public abstract class DataBase {
     public static ArrayList <Challenge> quests = new ArrayList<Challenge>();
-    //public static ArrayList<String> Title = new ArrayList<>();
-    //public static ArrayList<String> Disc = new ArrayList<>();
+    public static ArrayList <Challenge> myquests = new ArrayList<Challenge>();
     public static boolean vk_permission = false;
 }

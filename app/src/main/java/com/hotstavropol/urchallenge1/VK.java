@@ -37,6 +37,7 @@ public class VK extends AppCompatActivity {
                 vkAccessToken = res;
                 DataBase.vk_permission = true;
                 Toast.makeText(getApplicationContext(), "Авторизация прошла успешно", Toast.LENGTH_LONG).show();
+                Update.update();
                 finish();
                 //Intent intent = new Intent(VK.this, MenuActivity.class);
                 //startActivity(intent);

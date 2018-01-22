@@ -40,30 +40,6 @@ public class Desk1 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Retrofit.Builder builder = new Retrofit.Builder().
-                baseUrl("http://draglit.hol.es").
-                addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
-        Link getter = retrofit.create(Link.class);
-        Call<List<Challenge>> call = getter.get("getall");
-        call.enqueue(new Callback<List<Challenge>>() {
-            @Override
-            public void onResponse(Call<List<Challenge>> call, retrofit2.Response<List<Challenge>> response) {
-                List<Challenge> tmp = response.body();
-                Log.d("msg", tmp.get(0).title + " " + tmp.get(0).description);
-                Challenge t;
-                DataBase.quests.clear();
-                for (int i = 0; i < tmp.size(); i++)
-                    DataBase.quests.add(new Challenge(tmp.get(i).title, tmp.get(i).description));
-                Log.d("msg", "" + DataBase.quests.size());
-                Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<Challenge>> call, Throwable t) {
-                Toast.makeText(getContext(), "error :(", Toast.LENGTH_SHORT).show();
-            }
-        });
         return inflater.inflate(R.layout.desk1, container, false);
     }
 
